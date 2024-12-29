@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: atar
+Version: 1.0.0
+Summary: A CLI tool for AI tasks such as dataset handling, training, and validation.
+Home-page: https://github.com/yourusername/atar
+Author: Your Name
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: pandas>=1.3.0
+Requires-Dist: ultralytics>=8.0.0
+Requires-Dist: roboflow>=0.2.24
+Requires-Dist: supervision>=0.1.0
