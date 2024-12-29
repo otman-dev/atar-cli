@@ -16,3 +16,4 @@ Fire-Detection-6
 src/datasets/*
 runs/*
 Train/*
+Valid/*
