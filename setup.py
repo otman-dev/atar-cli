@@ -2,19 +2,17 @@ from setuptools import setup, find_packages
 
 setup(
     name="atar",
-    version="1.0.0",
+    version="1.0.2",
     description="A CLI tool for AI tasks such as dataset handling, training, and validation.",
-    author="Your Name",
-    author_email="your.email@example.com",
-    url="https://github.com/yourusername/atar",  # Replace with your GitHub repo URL
+    author="MOUHIB Otman",
+    author_email="mouhib.otm@gmail.com",
+    url="https://github.com/otman-dev/atar-cli",  # Replace with your GitHub repo URL
     packages=find_packages(where=".", exclude=["tests*"]),
     install_requires=[
         # Add any dependencies here
-        "numpy>=1.21.0",
-        "pandas>=1.3.0",
-        "ultralytics>=8.0.0",  # YOLO and related tools
-        "roboflow>=0.2.24",  # Roboflow Python API
-        "supervision>=0.1.0",  # Supervision tools for vision tasks
+        "ultralytics",  # YOLO and related tools
+        "roboflow",  # Roboflow Python API
+        "supervision",  # Supervision tools for vision tasks
         # Other required libraries
     ],
     entry_points={

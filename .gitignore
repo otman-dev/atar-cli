@@ -17,3 +17,4 @@ src/datasets/*
 runs/*
 Train/*
 Valid/*
+.pypirc

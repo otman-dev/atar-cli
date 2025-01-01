@@ -5,12 +5,12 @@ from src.Utilities import flexMenu
 import os
 
 def m_valid():
-    f = os.listdir("./Train/")
+    f = os.listdir("./OUTPUT/Train/")
     name = flexMenu.display_options(f)
     print("\n\t Validate Best or Last Weights : ")
-    f = os.listdir("./Train/"+name+"/weights/")
+    f = os.listdir("./OUTPUT/Train/"+name+"/weights/")
     filename = flexMenu.display_options(f)
-    mod = "./Train/"+name+"/weights/"+filename
+    mod = "./OUTPUT/Train/"+name+"/weights/"+filename
     filename = filename.rsplit(".", 1)[0]
     name2 = name+"_eval_" + filename
     log.logger.info("\nValidation START")
@@ -18,7 +18,7 @@ def m_valid():
     start_time = time.time()
     try:
         model = YOLO(mod)
-        results = model.val(project="Vaild", name=name2)
+        results = model.val(project="./OUTPUT/Vaild", name=name2)
 
     except Exception as e:
         # Code to handle other exceptions

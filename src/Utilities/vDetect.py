@@ -6,11 +6,11 @@ from src.Utilities import log
 from src.Utilities import flexMenu
 
 def video_detect():
-    f = os.listdir(os.getcwd() + "/runs/Videos/localSamples/")
+    f = os.listdir("./OUTPUT/runs/Videos/localSamples/")
     filename = flexMenu.display_options(f)
-    f = os.listdir(os.getcwd()+"/Train")
+    f = os.listdir("./OUTPUT/Train")
     m = flexMenu.display_options(f)
-    model_path = os.getcwd() + "/Train/"+m+"/weights/"
+    model_path = "./OUTPUT/Train/"+m+"/weights/"
     f = os.listdir(model_path)
     mt = flexMenu.display_options(f)
     model_path = model_path + mt

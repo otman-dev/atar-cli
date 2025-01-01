@@ -13,10 +13,10 @@ def m_train():
     try:
         # Code that might raise an exception
         f = ['yolov8n.pt', 'yolov8s.pt', 'yolov8m.pt', 'yolov8l.pt', 'yolov8x.pt']
-        model_path = os.getcwd() + "/src/yolov8DefaultModels/"
+        model_path = os.getcwd() + "./OUTPUT/yolov8DefaultModels/"
         model_name = flexMenu.display_options(f)
         model_path = model_path + model_name
-        data_path = "src/datasets"
+        data_path = "OUTPUT/datasets"
         f = os.listdir(data_path)
         y = os.getcwd()
         print("\n\t DATASETS :")
@@ -25,9 +25,11 @@ def m_train():
         print("\n\tConfigure Training Parameters : ")
         epochs = int(input("\n\t  ======> Insert Epochs Value   : "))
         imgsz = int(input("\n\t  ======> Insert imgsz Value    : "))
-        device = int(input("\n\t  ======> Insert device Value   : "))
-        workers = int(input("\n\t  ======> Insert workers Value  : "))
-        project = "Train"
+        device_input = input("\n\t  ======> Insert device Value (cpu or GPU ID): ")
+        device = device_input if device_input.lower() == "cpu" else int(device_input)
+        print
+        lr = float(input("\n\t  ======> Insert learning Rate Value  : "))
+        project = "./OUTPUT/Train"
         if model_name == "yolov8n.pt":
             m = "n"
         elif model_name == "yolov8s.pt":
@@ -39,14 +41,14 @@ def m_train():
         elif model_name == "yolov8x.pt":
             m = "x"
 
-        name = "train-e" + str(epochs) + "-i" + str(imgsz) + "-w" + str(workers) + "-" + "v8" + m
+        name = "train-e" + str(epochs) + "-i" + str(imgsz) + "-lr" + str(lr) + "-" + "v8" + m
         start_time = time.time()
         model = YOLO(model_path)
         log.logger.info("\nTraining START")
         print("\n")
         model.train(data=data_path, epochs=epochs, imgsz=imgsz, device=device,
-                    workers=workers, project=project, name=name, show_labels=True,
-                    lr0=0.1)
+                     project=project, name=name, show_labels=True,
+                    lr0=lr)
 
     except Exception as e:
         # Code to handle other exceptions
