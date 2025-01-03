@@ -40,10 +40,10 @@ def stream():
 
     try:
         # Define the base output path
-        base_path = "./OUTPUT/runs/Streams"
+        base_path = "OUTPUT/runs/Streams"
         create_directories(base_path)
 
-        model_path = "./OUTPUT/Train/"
+        model_path = "OUTPUT/Train/"
         x = os.listdir(model_path)
         train = flexMenu.display_options(x)
         model_path = model_path + train + "/weights/"

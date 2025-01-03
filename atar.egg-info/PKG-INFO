@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: atar
-Version: 1.0.2
+Version: 1.0.13
 Summary: A CLI tool for AI tasks such as dataset handling, training, and validation.
 Home-page: https://github.com/otman-dev/atar-cli
 Author: MOUHIB Otman

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="atar",
-    version="1.0.2",
+    version="1.0.13",
     description="A CLI tool for AI tasks such as dataset handling, training, and validation.",
     author="MOUHIB Otman",
     author_email="mouhib.otm@gmail.com",

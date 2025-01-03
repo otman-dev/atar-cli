@@ -9,8 +9,8 @@ def r_train():
     start_time = time.time()
     try:
 
-        model_path =  "./OUTPUT/Train/"
-        f = os.listdir("./OUTPUT/Train/")
+        model_path =  "OUTPUT/Train/"
+        f = os.listdir("OUTPUT/Train/")
         model_name = flexMenu.display_options(f)
         model_path = model_path + model_name + "/weights/last.pt"
         start_time = time.time()
