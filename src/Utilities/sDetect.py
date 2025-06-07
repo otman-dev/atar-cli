@@ -33,7 +33,7 @@ def is_fire_detected(detections) -> bool:
         result = class_ids == 0
         if hasattr(result, "any"):
             return result.any()
-    except Exception:
+    except (TypeError, ValueError):
         pass
 
     # Fallback for iterables or objects exposing underlying data
