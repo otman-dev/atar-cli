@@ -22,17 +22,31 @@ except Exception:  # pragma: no cover - optional dependency
 
 
 def is_fire_detected(detections) -> bool:
-    """Return True if class id 0 is present in detections."""
+    """Return ``True`` if class id ``0`` is present in ``detections``."""
     try:
         class_ids = detections.class_id
     except AttributeError:
         return False
 
-    # Handle both numpy-like arrays and plain iterables
+    # Attempt NumPy-like equality check first
     try:
-        return (class_ids == 0).any()
-    except AttributeError:
-        return 0 in class_ids
+        result = class_ids == 0
+        if hasattr(result, "any"):
+            return result.any()
+    except (TypeError, ValueError):
+        pass
+
+    # Fallback for iterables or objects exposing underlying data
+    try:
+        for cid in class_ids:
+            if cid == 0:
+                return True
+    except TypeError:
+        data = getattr(class_ids, "data", None)
+        if data is not None:
+            return 0 in data
+
+    return False
 
 
 def create_directories(path: str):
