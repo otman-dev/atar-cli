@@ -26,9 +26,9 @@ def r_train():
     else:
         # Code to run if no exception occurred
         end_time = time.time()
-        log.logger.info("\nNo errors occurred DONE SUCESS\nExecution time: %.2f seconds", end_time - start_time)
+        log.logger.info("\nNo errors occurred DONE SUCCESS\nExecution time: %.2f seconds", end_time - start_time)
 
     finally:
         # Code that will run regardless of whether an exception occurred
-        log.logger.critical("\nTrainning EXIT")
+        log.logger.critical("\nTraining EXIT")
         print("\n")
