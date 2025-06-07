@@ -18,7 +18,7 @@ def m_valid():
     start_time = time.time()
     try:
         model = YOLO(mod)
-        results = model.val(project="OUTPUT/Valid", name=name2)
+        results = model.val(project=VALID_OUTPUT_DIR, name=name2)
 
     except Exception as e:
         # Code to handle other exceptions
