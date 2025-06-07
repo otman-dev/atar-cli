@@ -101,7 +101,7 @@ def stream():
 
             # Trigger alert when a detection of class id 0 is present
             if is_fire_detected(detections):
-                print('ALAAAAAAARRM RINGING FIRE !!!!!')
+                log.logger.critical('ALAAAAAAARRM RINGING FIRE !!!!!')
 
             cv2.imshow("yolov8", frame)
             writer.write(frame)
