@@ -15,9 +15,9 @@ def roboflow_dataset():
     try:
         # Create necessary directories if they don't exist
         output_dir = "OUTPUT/datasets"
-        dataset_dir = os.path.join(output_dir)  # Folder for the dataset
+        dataset_dir = os.path.join(output_dir)  # Base folder for datasets
 
-        # Ensure the full path (OUTPUT/datasets/dataset_name) is created
+        # Ensure the base dataset directory (OUTPUT/datasets) exists
         os.makedirs(dataset_dir, exist_ok=True)
 
         # Change to the datasets directory
