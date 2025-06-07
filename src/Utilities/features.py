@@ -1,9 +1,12 @@
+"""High level wrapper functions used by the ATAR CLI."""
+
 from src.Utilities import roboFlowDataSet, vDetect, sDetect, modelValid, modelTrain, rTrain
 import sys
 import logging
 from src.Utilities import log
 
 def resume_train():
+    """Resume a previously started training run."""
 
     rTrain.r_train()
     action = "\n\t  ======> Do you want to proceed?"
@@ -17,6 +20,7 @@ def resume_train():
 
         
 def get_dataset():
+    """Download a dataset using the Roboflow API."""
     roboFlowDataSet.roboflow_dataset()
     action = "\n\t  ======> Do you want to proceed?"
     if get_user_confirmation(action):
@@ -29,6 +33,7 @@ def get_dataset():
 
 
 def video_detect():
+    """Run object detection on an existing video file."""
     vDetect.video_detect()
 
     action = "\n\t  ======> Do you want to proceed?"
@@ -42,6 +47,7 @@ def video_detect():
 
 
 def stream():
+    """Start a live webcam detection stream."""
     sDetect.stream()
     action = "\n\t  ======> Do you want to proceed?"
     if get_user_confirmation(action):
@@ -52,6 +58,7 @@ def stream():
 
 
 def valid():
+    """Validate a trained model against a dataset."""
     modelValid.m_valid()
     action = "\n\t  ======> Do you want to proceed?"
     if get_user_confirmation(action):
@@ -64,6 +71,7 @@ def valid():
 
 
 def train():
+    """Start a new training run using a selected dataset and model."""
     modelTrain.m_train()
     action = "\n\t  ======> Do you want to proceed?"
     if get_user_confirmation(action):
@@ -76,6 +84,7 @@ def train():
 
 
 def get_user_confirmation(message):
+    """Prompt the user for a ``Y``/``N`` confirmation."""
     while True:
         user_input = input(f"{message} (Y/N): ").strip().lower()
         if user_input == 'y':

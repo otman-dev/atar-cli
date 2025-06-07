@@ -6,6 +6,15 @@ from unittest.mock import MagicMock
 
 import pytest
 
+FEATURE_FUNCTIONS = [
+    "get_dataset",
+    "train",
+    "resume_train",
+    "valid",
+    "stream",
+    "video_detect",
+]
+
 
 @pytest.fixture()
 def cli_module(monkeypatch):
