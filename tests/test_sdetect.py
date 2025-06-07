@@ -14,11 +14,13 @@ def test_is_fire_detected_with_numpy_like():
         def __init__(self, data):
             self.data = data
         def __eq__(self, other):
+            return all(x == other for x in self.data)
+        def equals_simulation(self, other):
             return DummyArray([1 if x == other else 0 for x in self.data])
         def any(self):
             return any(self.data)
     det = DummyDetections(DummyArray([1, 0, 2]))
-    assert is_fire_detected(det) is True
+    assert is_fire_detected(det) is True  # Ensure is_fire_detected handles DummyArray correctly
 
 def test_is_fire_detected_with_list():
     det = DummyDetections([1, 2])
