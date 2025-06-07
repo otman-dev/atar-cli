@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: atar
-Version: 1.0.13
+Version: 1.0.14
 Summary: A CLI tool for AI tasks such as dataset handling, training, and validation.
 Home-page: https://github.com/otman-dev/atar-cli
 Author: MOUHIB Otman
@@ -10,6 +10,3 @@ Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
 License-File: LICENSE
-Requires-Dist: ultralytics
-Requires-Dist: roboflow
-Requires-Dist: supervision
