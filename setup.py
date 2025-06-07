@@ -1,9 +1,14 @@
 from setuptools import setup, find_packages
 
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 setup(
     name="atar",
     version="1.0.14",
     description="A CLI tool for AI tasks such as dataset handling, training, and validation.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author="MOUHIB Otman",
     author_email="mouhib.otm@gmail.com",
     url="https://github.com/otman-dev/atar-cli",  # Replace with your GitHub repo URL
