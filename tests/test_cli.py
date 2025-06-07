@@ -68,25 +68,11 @@ def test_process_choice_quit(monkeypatch, cli_module):
 def test_process_choice_invalid_option(monkeypatch, cli_module):
     mock_warning = MagicMock()
     monkeypatch.setattr(cli_module.log.logger, "warning", mock_warning)
-    for func in [
-        "get_dataset",
-        "train",
-        "resume_train",
-        "valid",
-        "stream",
-        "video_detect",
-    ]:
+    for func in FEATURE_FUNCTIONS:
         monkeypatch.setattr(cli_module.features, func, MagicMock())
 
     result = cli_module.process_choice("invalid")
     assert result is True
     mock_warning.assert_called_once()
-    for func in [
-        cli_module.features.get_dataset,
-        cli_module.features.train,
-        cli_module.features.resume_train,
-        cli_module.features.valid,
-        cli_module.features.stream,
-        cli_module.features.video_detect,
-    ]:
+    for func in [getattr(cli_module.features, name) for name in FEATURE_FUNCTIONS]:
         func.assert_not_called()
