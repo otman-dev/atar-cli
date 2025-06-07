@@ -1,12 +1,38 @@
 import os
 import datetime
-from ultralytics import YOLO
 import time
-from src.Utilities import log
-import cv2
 import argparse
-import supervision as sv
+from src.Utilities import log
 from src.Utilities import flexMenu
+
+try:
+    from ultralytics import YOLO
+except Exception:  # pragma: no cover - optional dependency
+    YOLO = None
+
+try:
+    import cv2
+except Exception:  # pragma: no cover - optional dependency
+    cv2 = None
+
+try:
+    import supervision as sv
+except Exception:  # pragma: no cover - optional dependency
+    sv = None
+
+
+def is_fire_detected(detections) -> bool:
+    """Return True if class id 0 is present in detections."""
+    try:
+        class_ids = detections.class_id
+    except AttributeError:
+        return False
+
+    # Handle both numpy-like arrays and plain iterables
+    try:
+        return (class_ids == 0).any()
+    except AttributeError:
+        return 0 in class_ids
 
 
 def create_directories(path: str):
@@ -32,6 +58,9 @@ def stream():
 
     log.logger.info("\nSTREAM START")
     start_time = time.time()
+
+    if YOLO is None or cv2 is None or sv is None:
+        raise ImportError("Required dependencies for streaming are not installed")
 
     def parse_arguments() -> argparse.Namespace:
         parser = argparse.ArgumentParser(description="YOLOv8 live")
@@ -70,8 +99,9 @@ def stream():
             detections = sv.Detections.from_ultralytics(results[0])
             frame = box_annotator.annotate(scene=frame, detections=detections)
 
-            if not detections.class_id.any() == 0:
-                print('ALAAAAAAARRM RINGING FIRE !!!!!')
+            # Trigger alert when a detection of class id 0 is present
+            if is_fire_detected(detections):
+                log.logger.critical('ALAAAAAAARRM RINGING FIRE !!!!!')
 
             cv2.imshow("yolov8", frame)
             writer.write(frame)
